@@ -10,8 +10,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@clerk/clerk-react": "^5.60.0",
+    "axios": "^1.13.4",
+    "bootstrap": "^5.3.8",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^4.1.0",
+    "lucide-react": "^0.563.0",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "react-hot-toast": "^2.6.0",
+    "react-router-dom": "^7.13.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",
