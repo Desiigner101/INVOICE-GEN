@@ -1,6 +1,6 @@
 const PreviewPage = () => {
     return (
-        <div className="container">Preview Page</div>
+        <div>Preview Page</div>
     );
 }
 
