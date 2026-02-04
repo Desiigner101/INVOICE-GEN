@@ -1,0 +1,138 @@
+/* Hero section styling */
+.hero-section {
+    /* Gradient overlay for better text visibility on background image */
+    background: linear-gradient(rgba(13, 110, 253, 0.80), rgba(13, 110, 253, 0.70)),
+    url('[https://placehold.co/1920x1080/495057/dee2e6?text=Modern+Digital+Workspace](https://placehold.co/1920x1080/495057/dee2e6?text=Modern+Digital+Workspace)') no-repeat center center;
+    background-size: cover;
+    color: #ffffff; /* Ensure text is white */
+}
+
+.hero-section h1 {
+    font-weight: 900; /* Extra bold for hero title */
+}
+
+/* Navbar brand styling */
+.navbar-brand .fw-bolder {
+    color: #343a40; /* Darker color for brand name for better contrast on white navbar */
+}
+
+/* Styling for cards in "How It Works" section */
+#how-it-works .card {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    border: none; /* Remove default card border for a cleaner look */
+}
+
+#how-it-works .card:hover {
+    transform: translateY(-10px); /* Slight lift effect on hover */
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.12) !important; /* Softer shadow on hover */
+}
+
+/* Container for images within cards */
+.card-img-top-container img {
+    width: 100px; /* Size of the number icons */
+    height: 100px;
+    object-fit: cover; /* Ensure images cover the area nicely */
+}
+
+/* Soft background colors for step icon containers for visual differentiation */
+.bg-primary-soft { background-color: rgba(13, 110, 253, 0.1); }
+.bg-success-soft { background-color: rgba(25, 135, 84, 0.1); }
+.bg-warning-soft { background-color: rgba(255, 193, 7, 0.15); }
+.bg-info-soft { background-color: rgba(13, 202, 240, 0.1); }
+
+/* Button styling adjustments */
+.btn-warning {
+    color: #000000; /* Ensure text is dark on yellow for accessibility */
+    border-width: 2px; /* Slightly bolder border */
+}
+.btn-warning:hover {
+    color: #000000;
+    background-color: #ffca2c; /* Lighter yellow on hover */
+    border-color: #ffc720;
+}
+
+.btn-outline-light {
+    border-width: 2px; /* Slightly bolder border for outline buttons */
+}
+
+.btn-primary.rounded-pill,
+.btn-warning.rounded-pill,
+.btn-outline-light.rounded-pill {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    font-weight: 500; /* Medium weight for button text */
+}
+
+/* Footer icon styling */
+footer a i { /* Simplified and corrected selector for footer icons */
+    font-size: 1.25rem;
+    transition: color 0.2s ease-in-out;
+}
+footer a:hover i { /* Simplified and corrected selector for footer icons */
+    color: #ffffff !important; /* White color on hover for better visibility */
+}
+
+#features h2, h3 {
+    color: #0D6EFDB2;
+}
+
+/* Responsive adjustments for various screen sizes */
+@media (max-width: 991.98px) { /* Medium devices (tablets, less than 992px) */
+    .hero-section {
+        min-height: 70vh; /* Adjust height for smaller screens */
+    }
+    .hero-section h1 {
+        font-size: 2.8rem; /* Slightly smaller hero title */
+    }
+    .hero-section .lead {
+        font-size: 1.1rem; /* Slightly smaller lead text */
+    }
+    .navbar-nav {
+        padding-top: 1rem; /* Spacing for collapsed navbar items */
+        padding-bottom: 0.5rem;
+    }
+    .navbar-nav .nav-item {
+        text-align: center; /* Center navbar items when collapsed */
+    }
+    .navbar-nav .btn { /* Make button full width in collapsed navbar */
+        width: 60%;
+        margin: 0.5rem auto;
+    }
+}
+
+@media (max-width: 767.98px) { /* Small devices (landscape phones, less than 768px) */
+    .hero-section h1 {
+        font-size: 2.2rem; /* Further reduce hero title size */
+    }
+    .hero-section .lead {
+        font-size: 1rem; /* Further reduce lead text size */
+    }
+    .display-5 { /* Reduce size of section titles (h2) on smaller screens */
+        font-size: 2.2rem; /* Adjusted from 2.5rem for better fit */
+    }
+    .btn-lg { /* Adjust button padding and font size on smaller screens */
+        padding: 0.75rem 1.25rem;
+        font-size: 1rem;
+    }
+    #features .row { /* Center text in features section on small screens */
+        text-align: center;
+    }
+    #features .row .col-md-6 img { /* Add margin below images in features section */
+        margin-bottom: 1.5rem;
+    }
+}
+
+@media (max-width: 575.98px) { /* Extra small devices (portrait phones, less than 576px) */
+    .hero-section h1 {
+        font-size: 1.8rem; /* Even smaller hero title */
+    }
+    .hero-section .lead {
+        font-size: 0.9rem; /* Even smaller lead text */
+    }
+    .display-5 {
+        font-size: 1.8rem; /* Smaller section titles */
+    }
+    #how-it-works .card-body p.small {
+        font-size: 0.8rem; /* Adjust small text in cards */
+    }
+}
