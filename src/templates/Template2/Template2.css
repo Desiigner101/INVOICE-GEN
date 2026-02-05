@@ -1,0 +1,19 @@
+/* template2.css */
+.template2-wrapper {
+    background-color: #ffffff;
+    font-size: 0.95rem;
+}
+
+.notes-section {
+    background-color: #f0fdf4;
+    border-top: 3px solid #22c55e;
+}
+
+.template2 .company-title {
+    color: #198754;
+}
+
+.template2 .template2-table-header {
+    background-color: #198754 !important;
+    color: white !important;
+}

@@ -1,0 +1,45 @@
+/* template1.css */
+
+.w-800 {
+    max-width: 800px;
+}
+
+.company-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.invoice-title {
+    color: #ea580c;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.billing-title {
+    color: #ea580c;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.orange-border {
+    border-color: #ea580c !important;
+}
+
+.billing-box {
+    background-color: #fff7ed;
+}
+
+.table-header {
+    background-color: #ea580c !important;
+    color: white !important;
+}
+
+.totals-box {
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #fff7ed;
+}
+
+.total-highlight,.template1 .company-title {
+    color: #ea580c;
+}

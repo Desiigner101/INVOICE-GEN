@@ -1,0 +1,31 @@
+.template3-container {
+    max-width: 800px;
+}
+
+.template3-heading {
+    color: #8a3ff3;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.template3-subheading {
+    color: #8a3ff3;
+}
+
+.template3-bill-box {
+    background-color: #f5f0ff;
+}
+
+.template3-table-header {
+    background-color: #8a3ff3 !important;
+    color: white !important;
+}
+
+.template3-total-box {
+    width: 100%;
+    max-width: 300px;
+}
+
+.template3-total,.template3 .company-title {
+    color: #8a3ff3;
+}
