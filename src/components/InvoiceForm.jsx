@@ -389,7 +389,7 @@ const InvoiceForm = () => {
           <div className="w-100 w-md-50">
             <div className="d-flex justify-content-between">
               <span>Subtotal</span>
-              <span>₹{subtotal.toFixed(2)}</span>
+              <span>₱{subtotal.toFixed(2)}</span>
             </div>
             <div className="d-flex justify-content-between align-items-center my-2">
               <label htmlFor="taxInput" className="me-2">
@@ -407,11 +407,11 @@ const InvoiceForm = () => {
             </div>
             <div className="d-flex justify-content-between">
               <span>Tax Amount</span>
-              <span>₹{taxAmount.toFixed(2)}</span>
+              <span>₱{taxAmount.toFixed(2)}</span>
             </div>
             <div className="d-flex justify-content-between fw-bold mt-2">
               <span>Grand Total</span>
-              <span>₹{grandTotal.toFixed(2)}</span>
+              <span>₱{grandTotal.toFixed(2)}</span>
             </div>
           </div>
         </div>
