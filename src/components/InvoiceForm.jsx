@@ -63,7 +63,7 @@ const InvoiceForm = () => {
       reader.onloadend = () => {
         setInvoiceData((prev) => ({
           ...prev,
-          logo: reader.result, // base64 string
+          logo: reader.result, // base64 string rani legit
         }));
       };
       reader.readAsDataURL(file);
