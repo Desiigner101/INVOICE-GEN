@@ -12,7 +12,7 @@ export const formatInvoiceData = (invoiceData) => {
         logo = ""
     } = invoiceData || {};
 
-    const currencySymbol = "₹";
+    const currencySymbol = "₱";
     const subtotal = items.reduce((acc, item) => acc + (item.qty * item.amount), 0);
     const taxAmount = subtotal * (tax / 100);
     const total = subtotal + taxAmount;

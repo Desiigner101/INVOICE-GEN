@@ -1,11 +1,11 @@
 import React from 'react';
-import './template2.css';
+import './Template2.css';
 
 const Template2 = ({ data }) => {
     const formatCurrency = (amount) => {
-        return new Intl.NumberFormat('en-IN', {
+        return new Intl.NumberFormat('en-PH', {
             style: 'currency',
-            currency: 'INR',
+            currency: 'PHP',
             minimumFractionDigits: 2
         }).format(amount);
     };
