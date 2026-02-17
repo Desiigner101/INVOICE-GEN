@@ -2,7 +2,7 @@ import { useContext, useRef, useState } from "react";
 import { templates } from "../assets/assets";
 import { AppContext } from "../context/AppContext";
 import InvoicePreview from "../components/InvoicePreview";
-import { saveInvoice } from "../service/invoiceService.js";
+import { saveInvoice, sendInvoice } from "../service/invoiceService.js";
 import {toast} from "react-hot-toast"
 import { useNavigate } from "react-router-dom";
 import {Loader2} from "lucide-react"
@@ -17,6 +17,10 @@ const PreviewPage = () => {
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
     const [downloading, setDownloading] = useState(false); 
+    const [showModal, setShowModal] = useState(false);
+
+    const [customerEmail, setCustomerEmail] = useState(""); 
+    const [emailing, setEmailing] = useState(false);
 
 
     const handleSaveAndExit = async() => {
@@ -84,6 +88,53 @@ const PreviewPage = () => {
     }
   };
 
+  const isValidEmail = (email) => {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return emailRegex.test(email);
+};
+
+  const handleSendEmail = async () => {
+    if (!customerEmail) {
+        return toast.error("Please enter an email address.");
+    }
+
+    if (!isValidEmail(customerEmail)) {
+        return toast.error("Please enter a valid email address.");
+    }
+
+    if (!previewRef.current) {
+        return toast.error("Invoice preview not found.");
+    }
+    try {
+      setEmailing(true);
+
+      // Generate anggg PDF blob
+      const pdfBlob = await generatePdfFromElement(
+        previewRef.current,
+        `invoice_${Date.now()}.pdf`,
+        true); 
+
+      const formData = new FormData();
+      formData.append("file", pdfBlob);
+      formData.append("email", customerEmail);
+
+      const response = await sendInvoice(baseURL, formData);
+
+      if (response.status === 200) {
+        toast.success("Email sent successfully!");
+        setShowModal(false);
+        setCustomerEmail("");
+      } else {
+        toast.error("Failed to send email.");
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Something went wrong while sending email.");
+    } finally {
+      setEmailing(false);
+    }
+  };
+
     return (
         <div className="previewpage container-fluid d-flex flex-column p-3 min-vh-100">
 
@@ -111,9 +162,9 @@ const PreviewPage = () => {
                         {loading ? "Saving..." : "Save and Exit"}</button>
                     
                     {invoiceData.id && <button className="btn btn-danger d-flex align-items-center justify-content-center" onClick={handleDelete}>Delete Invoice</button>}
-                    <button className="btn btn-secondary">Back to Dashboard</button>
+                    <button className="btn btn-secondary" onClick={() => navigate('/dashboard')}>Back to Dashboard</button>
 
-                    <button className="btn btn-info">Send Email</button>
+                    <button className="btn btn-info" onClick={() => setShowModal(true)}>Send Email</button>
 
                     <button className="btn btn-success d-flex align-items-center justify-content-center"
                     onClick={handleDownloadPdf} disabled={downloading}>
@@ -130,6 +181,54 @@ const PreviewPage = () => {
                     <InvoicePreview invoiceData={invoiceData} template={selectedTemplate}/>
                 </div>
             </div>
+
+            {showModal && (
+            <div
+            className="modal d-block"
+            tabIndex="-1"
+            role="dialog"
+            style={{ backgroundColor: "rgba(0,0,0,0.5)" }}
+            >
+            <div className="modal-dialog" role="document">
+                <div className="modal-content">
+                <div className="modal-header">
+                    <h5 className="modal-title">Send Invoice</h5>
+                    <button
+                    type="button"
+                    className="btn-close"
+                    onClick={() => setShowModal(false)}
+                    ></button>
+                </div>
+                <div className="modal-body">
+                    <input
+                    type="email"
+                    className="form-control"
+                    placeholder="Customer Email"
+                    value={customerEmail}
+                    onChange={(e) => setCustomerEmail(e.target.value)}
+                    />
+                </div>
+                <div className="modal-footer">
+                    <button
+                    type="button"
+                    className="btn btn-primary"
+                    onClick={handleSendEmail}
+                    disabled={emailing}
+                    >
+                    {emailing ? "Sending..." : "Send"}
+                    </button>
+                    <button
+                    type="button"
+                    className="btn btn-secondary"
+                    onClick={() => setShowModal(false)}
+                    >
+                    Cancel
+                    </button>
+                </div>
+                </div>
+            </div>
+            </div>
+        )}
         </div>
 
     );

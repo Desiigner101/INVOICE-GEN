@@ -33,7 +33,7 @@ const Menubar = () => {
                         </li>
                         <li className="nav-item">
                             <button className="nav-link fw-medium">
-                                Generate
+                                <Link className="nav-link fw-medium" to="/generate">Generate Invoice</Link>
                             </button>
                         </li>
                         <li className="nav-item">
