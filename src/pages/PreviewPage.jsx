@@ -9,12 +9,15 @@ import {Loader2} from "lucide-react"
 import { uploadInvoiceThumbnail } from "../service/cloudinaryService";
 import html2canvas from "html2canvas";
 import { deleteInvoice } from "../service/invoiceService.js";
+import { generatePdfFromElement } from "../utils/pdfUtils";
 
 const PreviewPage = () => {
     const previewRef = useRef();
     const { selectedTemplate, invoiceData, setSelectedTemplate, baseURL } = useContext(AppContext);
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
+    const [downloading, setDownloading] = useState(false); 
+
 
     const handleSaveAndExit = async() => {
         try{
@@ -64,6 +67,23 @@ const PreviewPage = () => {
     }
   };
 
+  const handleDownloadPdf = async () => {
+    if (!previewRef.current) return;
+
+    try {
+      setDownloading(true);
+      await generatePdfFromElement(
+        previewRef.current,
+        `invoice_${Date.now()}.pdf`
+      );
+    } catch (error) {
+      toast.error("Failed to download PDF.");
+      console.error(error);
+    } finally {
+      setDownloading(false);
+    }
+  };
+
     return (
         <div className="previewpage container-fluid d-flex flex-column p-3 min-vh-100">
 
@@ -92,8 +112,14 @@ const PreviewPage = () => {
                     
                     {invoiceData.id && <button className="btn btn-danger d-flex align-items-center justify-content-center" onClick={handleDelete}>Delete Invoice</button>}
                     <button className="btn btn-secondary">Back to Dashboard</button>
+
                     <button className="btn btn-info">Send Email</button>
-                    <button className="btn btn-success d-flex align-items-center justify-content-center">Download PDF</button>
+
+                    <button className="btn btn-success d-flex align-items-center justify-content-center"
+                    onClick={handleDownloadPdf} disabled={downloading}>
+                        {downloading && <Loader2 className="me-2 spin-animation" size={18}/>}
+                        {downloading ? "Downloading..." : "Download PDF"}
+                    </button>
                 </div>
             </div>
 
