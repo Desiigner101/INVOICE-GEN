@@ -18,7 +18,7 @@ function Dashboard() {
   useEffect(() => {
     const fetchInvoices = async () => {
       try {
-        //const token = await getToken();
+        //const token = await getToken(); //unja rani ha
         const response = await getAllInvoices(baseURL);
         setInvoices(response.data);
       } catch (error) {
