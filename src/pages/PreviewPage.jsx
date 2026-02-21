@@ -1,4 +1,4 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { templates } from "../assets/assets";
 import { AppContext } from "../context/AppContext";
 import InvoicePreview from "../components/InvoicePreview";
@@ -10,6 +10,7 @@ import { uploadInvoiceThumbnail } from "../service/cloudinaryService";
 import html2canvas from "html2canvas";
 import { deleteInvoice } from "../service/invoiceService.js";
 import { generatePdfFromElement } from "../utils/pdfUtils";
+import { useAuth, useUser } from "@clerk/clerk-react";
 
 const PreviewPage = () => {
     const previewRef = useRef();
@@ -21,6 +22,9 @@ const PreviewPage = () => {
 
     const [customerEmail, setCustomerEmail] = useState(""); 
     const [emailing, setEmailing] = useState(false);
+
+    const { getToken } = useAuth();
+    const {user} = useUser();
 
 
     const handleSaveAndExit = async() => {
@@ -37,10 +41,13 @@ const PreviewPage = () => {
             const thumbnailUrl = await uploadInvoiceThumbnail(imageData);
             const payload = {
                 ...invoiceData,
+                clerkId: user.id,
                 thumbnailUrl,
                 template: selectedTemplate,
             };
-            const response  = await saveInvoice(baseURL, payload);
+
+            const token = await getToken();
+            const response  = await saveInvoice(baseURL, payload, token);
             if(response.status === 200){
                 toast.success("Invoice saved successfully.");
                 navigate("/dashboard");
@@ -57,8 +64,8 @@ const PreviewPage = () => {
     const handleDelete = async () => {
 
     try {
-      //const token = await getToken();
-      const res = await deleteInvoice(baseURL, invoiceData.id);
+      const token = await getToken();
+      const res = await deleteInvoice(baseURL, invoiceData.id, token);
       if (res.status === 204) {
         toast.success("Invoice deleted successfully.");
         navigate("/dashboard");
@@ -118,7 +125,9 @@ const PreviewPage = () => {
       formData.append("file", pdfBlob);
       formData.append("email", customerEmail);
 
-      const response = await sendInvoice(baseURL, formData);
+      const token = await getToken();
+      console.log("token:", token);
+      const response = await sendInvoice(baseURL, token, formData);
 
       if (response.status === 200) {
         toast.success("Email sent successfully!");
@@ -134,6 +143,13 @@ const PreviewPage = () => {
       setEmailing(false);
     }
   };
+
+  useEffect(() => {
+    if (!invoiceData || !invoiceData.items?.length) {
+      toast.error("Invoice data is missing.");
+      navigate("/dashboard");
+    }
+  }, [invoiceData, navigate]);
 
     return (
         <div className="previewpage container-fluid d-flex flex-column p-3 min-vh-100">

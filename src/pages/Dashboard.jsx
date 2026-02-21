@@ -5,21 +5,23 @@ import { AppContext, initialInvoiceData } from "../context/AppContext.jsx";
 import { getAllInvoices } from "../service/invoiceService.js";
 import toast from "react-hot-toast";
 import { formatDate } from "../utils/formatInvoiceData.js";
+import { useAuth } from "@clerk/clerk-react";
 
 
 function Dashboard() {
   const [invoices, setInvoices] = useState([]);
   const navigate = useNavigate();
+  const { getToken } = useAuth();
   const { baseURL, setInvoiceData, setSelectedTemplate, setInvoiceTitle } =
     useContext(AppContext);
-
+  
  
 
   useEffect(() => {
     const fetchInvoices = async () => {
       try {
-        //const token = await getToken(); //unja rani ha
-        const response = await getAllInvoices(baseURL);
+        const token = await getToken(); //unja rani ha
+        const response = await getAllInvoices(baseURL, token);
         setInvoices(response.data);
       } catch (error) {
         console.error("Failed to load invoices", error);
