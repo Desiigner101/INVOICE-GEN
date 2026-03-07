@@ -11,15 +11,15 @@ import {
 } from "@clerk/clerk-react";
 
 const Menubar = () => {
-  const { setInvoiceData, setSelectedTemplate, setInvoiceTitle } =
-    useContext(AppContext);
+  const { setInvoiceData, setSelectedTemplate, setInvoiceTitle } = useContext(AppContext);
   const navigate = useNavigate();
   const { openSignIn } = useClerk();
+
   const handleGenerateClick = () => {
     // Reset context
     setInvoiceData(initialInvoiceData);
     setSelectedTemplate("template1");
-    setInvoiceTitle("Create Invoice");
+    setInvoiceTitle("New Invoice");
 
     navigate("/generate");
   };
