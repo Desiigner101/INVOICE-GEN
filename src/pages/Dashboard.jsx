@@ -80,7 +80,7 @@ function Dashboard() {
               <div className="card-body">
                 <h6 className="card-title mb-1">{invoice.title}</h6>
                 <small className="text-muted">
-                  Last Updated: {formatDate(invoice.lastUpdatedAt)}
+                  Last Updated: {formatDate(invoice.createdAt)}
                 </small>
               </div>
             </div>
