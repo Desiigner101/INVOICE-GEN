@@ -1,0 +1,58 @@
+/* Template6.css - Modern Blue */
+
+.template6 {
+    background: white;
+}
+
+.header-blue {
+    background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+}
+
+.invoice-title-blue {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.invoice-info-blue {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.section-title-blue {
+    color: #1e40af;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.billing-card-blue {
+    background: #eff6ff;
+    border-left: 4px solid #3b82f6;
+}
+
+.table-header-blue {
+    background: #1e40af !important;
+    color: white !important;
+}
+
+.table-header-blue th {
+    border: none !important;
+}
+
+.totals-blue {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+}
+
+.total-blue {
+    color: #1e40af;
+    font-size: 18px;
+}
+
+.bank-details-blue,
+.notes-blue {
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+}
