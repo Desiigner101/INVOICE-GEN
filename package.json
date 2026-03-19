@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@clerk/clerk-react": "^5.60.0",
+    "@stripe/react-stripe-js": "^5.6.1",
+    "@stripe/stripe-js": "^8.11.0",
     "axios": "^1.13.4",
     "bootstrap": "^5.3.8",
     "html2canvas": "^1.4.1",
