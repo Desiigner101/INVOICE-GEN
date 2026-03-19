@@ -35,5 +35,5 @@ export const templates = [
     { id: "template3", label: "Template 3", image: assets.template3, tier: "FREE" },
     { id: "template4", label: "Template 4", image: assets.template4, tier: "FREE" },
     { id: "template5", label: "Template 5", image: assets.template5, tier: "FREE" },
-    { id: "template6", label: "Template 6 - Premium 👑", image: assets.template6, tier: "PREMIUM" }, // ✅ NEW
+    { id: "template6", label: "Template 6 - Premium ", image: assets.template6, tier: "PREMIUM" }, // ✅ NEW
 ];

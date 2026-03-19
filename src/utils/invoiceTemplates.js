@@ -3,11 +3,13 @@ import Template2 from "../templates/Template2/Template2.jsx";
 import Template3 from "../templates/Template3/Template3.jsx";
 import Template4 from "../templates/Template4/Template4.jsx";
 import Template5 from "../templates/Template5/Template5.jsx";
+import Template6 from "../templates/Template6/Template6.jsx";
 
 export const templateComponents = {
     template1: Template1,
     template2: Template2,
     template3: Template3,
     template4: Template4,
-    template5: Template5
+    template5: Template5,
+    template6: Template6
 };

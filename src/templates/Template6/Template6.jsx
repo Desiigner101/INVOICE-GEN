@@ -36,7 +36,7 @@ const Template6 = ({ data }) => {
       <div className="row g-3 mb-4">
         <div className="col-md-6">
           <div className="billing-card-blue p-3 rounded h-100">
-            <h3 className="section-title-blue mb-2">Bill To</h3>
+            <h3 className="section-title-blue mb-2">Bill Tosdasdsadsd</h3>
             <p className="mb-1"><strong>{data.billingName}</strong></p>
             <p className="mb-1">{data.billingAddress}</p>
             <p className="mb-0">Phone: {data.billingPhone}</p>
