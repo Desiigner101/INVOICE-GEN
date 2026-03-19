@@ -64,31 +64,31 @@ const PreviewPage = () => {
     }
 
     const handleDelete = async () => {
-    // Check if invoice has an ID
-    if (!invoiceData.id) {
-        toast.error("Cannot delete unsaved invoice. Please save first.");
-        return;
-    }
+      // Check if invoice has an ID
+      if (!invoiceData.id) {
+          toast.error("Cannot delete unsaved invoice. Please save first.");
+          return;
+      }
 
-    try {
-        const token = await getToken();
-        
-        // Log for debugging
-        console.log("Deleting invoice ID:", invoiceData.id);
-        
-        const res = await deleteInvoice(baseURL, invoiceData.id, token);
-        
-        if (res.status === 204 || res.status === 200) {
-            toast.success("Invoice deleted successfully.");
-            navigate("/dashboard");
-        } else {
-            toast.error("Unable to delete invoice.");
-        }
-    } catch (err) {
-        toast.error("Failed to delete invoice.");
-        console.error("Delete error:", err);
-    }
-};
+      try {
+          const token = await getToken();
+          
+          // Log for debugging
+          console.log("Deleting invoice ID:", invoiceData.id);
+          
+          const res = await deleteInvoice(baseURL, invoiceData.id, token);
+          
+          if (res.status === 204 || res.status === 200) {
+              toast.success("Invoice deleted successfully.");
+              navigate("/dashboard");
+          } else {
+              toast.error("Unable to delete invoice.");
+          }
+      } catch (err) {
+          toast.error("Failed to delete invoice.");
+          console.error("Delete error:", err);
+      }
+  };
 
   const handleDownloadPdf = async () => {
     if (!previewRef.current) return;
