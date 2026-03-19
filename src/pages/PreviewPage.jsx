@@ -14,7 +14,7 @@ import { useAuth, useUser } from "@clerk/clerk-react";
 
 const PreviewPage = () => {
     const previewRef = useRef();
-    const { selectedTemplate, invoiceData, setSelectedTemplate, baseURL } = useContext(AppContext);
+    const { selectedTemplate, invoiceData, setSelectedTemplate, baseURL, setInvoiceData } = useContext(AppContext);
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
     const [downloading, setDownloading] = useState(false); 
@@ -49,6 +49,8 @@ const PreviewPage = () => {
             const token = await getToken();
             const response  = await saveInvoice(baseURL, payload, token);
             if(response.status === 200){
+                setInvoiceData(response.data);
+
                 toast.success("Invoice saved successfully.");
                 navigate("/dashboard");
             }else{
@@ -62,21 +64,31 @@ const PreviewPage = () => {
     }
 
     const handleDelete = async () => {
+    // Check if invoice has an ID
+    if (!invoiceData.id) {
+        toast.error("Cannot delete unsaved invoice. Please save first.");
+        return;
+    }
 
     try {
-      const token = await getToken();
-      const res = await deleteInvoice(baseURL, invoiceData.id, token);
-      if (res.status === 204) {
-        toast.success("Invoice deleted successfully.");
-        navigate("/dashboard");
-      } else {
-        toast.error("Unable to delete invoice.");
-      }
+        const token = await getToken();
+        
+        // Log for debugging
+        console.log("Deleting invoice ID:", invoiceData.id);
+        
+        const res = await deleteInvoice(baseURL, invoiceData.id, token);
+        
+        if (res.status === 204 || res.status === 200) {
+            toast.success("Invoice deleted successfully.");
+            navigate("/dashboard");
+        } else {
+            toast.error("Unable to delete invoice.");
+        }
     } catch (err) {
-      toast.error("Failed to delete invoice.");
-      console.error(err);
+        toast.error("Failed to delete invoice.");
+        console.error("Delete error:", err);
     }
-  };
+};
 
   const handleDownloadPdf = async () => {
     if (!previewRef.current) return;
