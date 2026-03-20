@@ -1,4 +1,5 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
+import { useAuth } from "@clerk/clerk-react";
 
 export const AppContext = createContext();
 
@@ -19,8 +20,30 @@ export const AppContextProvider = (props) => {
   const [invoiceData, setInvoiceData] = useState(initialInvoiceData);
   const [invoiceTitle, setInvoiceTitle] = useState("Create Invoice");
   const [selectedTemplate, setSelectedTemplate] = useState("template1");
+  const [isPremium, setIsPremium] = useState(false);
+  const [isUserLoaded, setIsUserLoaded] = useState(false);
 
+  const { getToken, isSignedIn } = useAuth();
   const baseURL = "http://localhost:8080/api";
+
+  useEffect(() => {
+    if (!isSignedIn) return;
+    const fetchSubscription = async () => {
+      try {
+        const token = await getToken();
+        const res = await fetch(`${baseURL}/subscription/status`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        const data = await res.json();
+        setIsPremium(data.subscriptionType === "PREMIUM");
+      } catch (e) {
+        console.error("Failed to fetch subscription status", e);
+      } finally {
+        setIsUserLoaded(true);
+      }
+    };
+    fetchSubscription();
+  }, [isSignedIn]);
 
   const contextValue = {
     baseURL,
@@ -31,6 +54,9 @@ export const AppContextProvider = (props) => {
     selectedTemplate,
     setSelectedTemplate,
     initialInvoiceData,
+    isPremium,
+    setIsPremium,
+    isUserLoaded,
   };
 
   return (

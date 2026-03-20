@@ -47,8 +47,12 @@ const CheckoutForm = ({ onSuccess, onCancel }) => {
       const data = await response.json();
 
       if (data.status === 'SUCCESS') {
-        toast.success('Successfully upgraded to Premium! 🎉');
-        onSuccess();
+        toast.success('Successfully upgraded to Premium!');
+        
+        // Wait for backend to update before refreshing UI
+        setTimeout(() => {
+          onSuccess();
+        }, 500);
       } else {
         toast.error(data.message);
       }
@@ -123,7 +127,7 @@ const UpgradeToPremiumModal = ({ show, onClose, onSuccess }) => {
         <div className="modal-content">
           <div className="modal-header">
             <div>
-              <h5 className="modal-title mb-1">Upgrade to Premium 👑</h5>
+              <h5 className="modal-title mb-1">Upgrade to Premium</h5>
               <p className="text-muted mb-0 small">Unlock 10+ premium invoice templates</p>
             </div>
             <button 
@@ -138,10 +142,10 @@ const UpgradeToPremiumModal = ({ show, onClose, onSuccess }) => {
             <div className="mb-4">
               <h6 className="fw-bold mb-3">Premium Features:</h6>
               <ul className="list-unstyled">
-                <li className="mb-2">✨ Access to 10+ premium templates</li>
-                <li className="mb-2">🎨 Exclusive professional designs</li>
-                <li className="mb-2">📊 Priority support</li>
-                <li className="mb-2">🚀 Early access to new features</li>
+                <li className="mb-2">Access to 10+ premium templates</li>
+                <li className="mb-2">Exclusive professional designs</li>
+                <li className="mb-2">Priority support</li>
+                <li className="mb-2">Early access to new features</li>
               </ul>
               
               {/* Pricing */}
@@ -160,7 +164,7 @@ const UpgradeToPremiumModal = ({ show, onClose, onSuccess }) => {
             </Elements>
 
             <p className="text-muted small mt-3 mb-0 text-center">
-              🔒 Secure payment powered by Stripe
+              Secure payment powered by Stripe
             </p>
           </div>
         </div>

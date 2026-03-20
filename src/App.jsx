@@ -5,6 +5,7 @@ import LandingPage from './pages/LandingPage/LandingPage.jsx';
 import Dashboard from './pages/Dashboard.jsx';
 import MainPage from './pages/MainPage.jsx';
 import PreviewPage from './pages/PreviewPage';
+import SubscriptionPage from './pages/SubscriptionPage.jsx'; 
 import { SignedIn, SignedOut, RedirectToSignIn } from "@clerk/clerk-react";
 import UserSyncHandler from './components/UserSyncHandler.jsx';
 
@@ -53,6 +54,20 @@ function App() {
             <>
               <SignedIn>
                 <PreviewPage />
+              </SignedIn>
+              <SignedOut>
+                <RedirectToSignIn />
+              </SignedOut>
+            </>
+          }
+        />
+        {/* ADD THIS NEW ROUTE */}
+        <Route
+          path="/subscription"
+          element={
+            <>
+              <SignedIn>
+                <SubscriptionPage />
               </SignedIn>
               <SignedOut>
                 <RedirectToSignIn />

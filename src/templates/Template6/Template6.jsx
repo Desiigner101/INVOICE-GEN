@@ -2,9 +2,9 @@ import "./Template6.css";
 
 const Template6 = ({ data }) => {
   const subtotal = data.items.reduce(
-    (acc, item) => acc + item.qty * item.amount,
+    (acc, item) => acc + item.qty * parseFloat(item.amount || 0),
     0
-  );
+);
   const taxAmount = (subtotal * parseFloat(data.tax || 0)) / 100;
   const total = subtotal + taxAmount;
 
@@ -70,8 +70,8 @@ const Template6 = ({ data }) => {
               <tr key={index}>
                 <td className="p-3">{item.name}</td>
                 <td className="p-3 text-center">{item.qty}</td>
-                <td className="p-3 text-end">₱{item.amount?.toFixed(2)}</td>
-                <td className="p-3 text-end">₱{(item.qty * item.amount).toFixed(2)}</td>
+                <td className="p-3 text-end">₱{parseFloat(item.amount || 0).toFixed(2)}</td>
+                <td className="p-3 text-end">₱{(item.qty * parseFloat(item.amount || 0)).toFixed(2)}</td>
               </tr>
             ))}
           </tbody>
