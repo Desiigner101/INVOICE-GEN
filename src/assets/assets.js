@@ -6,10 +6,10 @@ import template5 from './template5.png';
 import template6 from './template2.png';
 import upload_area from './upload_area.png';
 import logo from './logo_invoice.png';
-import landing1 from './landing1.png';
-import landing2 from './landing2.png';
-import landing3 from './landing3.png';
-import landing4 from './landing4.png';
+import landing1 from './Landing1.png';
+import landing2 from './Landing2.png';
+import landing3 from './Landing3.png';
+import landing4 from './Landing4.png';
 
 
 //download images from assets folder!
