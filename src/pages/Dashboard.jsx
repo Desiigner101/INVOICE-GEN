@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Plus } from "lucide-react";
 import { AppContext, initialInvoiceData } from "../context/AppContext.jsx";
-import { getAllInvoices } from "../service/invoiceService.js";
+import { getAllInvoices } from "../service/InvoiceService.js";
 import toast from "react-hot-toast";
 import { formatDate } from "../utils/formatInvoiceData.js";
 import { useAuth } from "@clerk/clerk-react";
