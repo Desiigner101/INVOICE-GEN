@@ -33,7 +33,7 @@ const CheckoutForm = ({ onSuccess, onCancel }) => {
       }
 
       const token = await getToken();
-      const response = await fetch('http://localhost:8080/api/subscription/upgrade', {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/subscription/upgrade`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -48,8 +48,6 @@ const CheckoutForm = ({ onSuccess, onCancel }) => {
 
       if (data.status === 'SUCCESS') {
         toast.success('Successfully upgraded to Premium!');
-        
-        // Wait for backend to update before refreshing UI
         setTimeout(() => {
           onSuccess();
         }, 500);
@@ -138,7 +136,6 @@ const UpgradeToPremiumModal = ({ show, onClose, onSuccess }) => {
           </div>
           
           <div className="modal-body">
-            {/* Features List */}
             <div className="mb-4">
               <h6 className="fw-bold mb-3">Premium Features:</h6>
               <ul className="list-unstyled">
@@ -148,7 +145,6 @@ const UpgradeToPremiumModal = ({ show, onClose, onSuccess }) => {
                 <li className="mb-2">Early access to new features</li>
               </ul>
               
-              {/* Pricing */}
               <div className="p-3 rounded bg-light text-center border border-primary mt-3">
                 <h3 className="mb-0 text-primary">
                   $1.99<span className="fs-6 text-muted">/month</span>

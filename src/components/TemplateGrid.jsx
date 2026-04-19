@@ -10,15 +10,12 @@ const TemplateGrid = ({ onTemplateClick }) => {
   const [showUpgradeModal, setShowUpgradeModal] = useState(false);
   const [selectedTemplateId, setSelectedTemplateId] = useState(null);
 
-  // Fetch user subscription status
   useEffect(() => {
     const fetchSubscriptionStatus = async () => {
       try {
         const token = await getToken();
-        const response = await fetch('http://localhost:8080/api/subscription/status', {
-          headers: {
-            'Authorization': `Bearer ${token}`
-          }
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/subscription/status`, {
+          headers: { 'Authorization': `Bearer ${token}` }
         });
         const data = await response.json();
         setSubscriptionType(data.subscriptionType);
@@ -26,14 +23,11 @@ const TemplateGrid = ({ onTemplateClick }) => {
         console.error('Error fetching subscription:', error);
       }
     };
-
     fetchSubscriptionStatus();
   }, [getToken]);
 
   const handleTemplateClick = (templateId) => {
     const template = templates.find(t => t.id === templateId);
-    
-    // Check if template is premium and user is free
     if (template.tier === "PREMIUM" && subscriptionType === "FREE") {
       setSelectedTemplateId(templateId);
       setShowUpgradeModal(true);
@@ -46,8 +40,6 @@ const TemplateGrid = ({ onTemplateClick }) => {
   const handleUpgradeSuccess = () => {
     setShowUpgradeModal(false);
     setSubscriptionType("PREMIUM");
-    
-    // Auto-select the template after upgrade
     if (selectedTemplateId) {
       onTemplateClick(selectedTemplateId);
       setSelectedTemplateId(null);
@@ -69,16 +61,11 @@ const TemplateGrid = ({ onTemplateClick }) => {
                 title={label}
                 style={{ opacity: isLocked ? 0.7 : 1 }}
               >
-                {/* Premium Badge */}
                 {isPremium && (
                   <div className="position-absolute top-0 end-0 m-2" style={{ zIndex: 2 }}>
-                    <span className="badge bg-warning text-dark">
-                      👑 Premium
-                    </span>
+                    <span className="badge bg-warning text-dark">👑 Premium</span>
                   </div>
                 )}
-
-                {/* Lock Overlay for Free Users */}
                 {isLocked && (
                   <div 
                     className="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center"
@@ -90,7 +77,6 @@ const TemplateGrid = ({ onTemplateClick }) => {
                     </div>
                   </div>
                 )}
-
                 <img src={image} alt={label} className="w-100" loading="lazy" />
                 <div className="p-2 text-center fw-medium">{label}</div>
               </div>
@@ -99,7 +85,6 @@ const TemplateGrid = ({ onTemplateClick }) => {
         })}
       </div>
 
-      {/* Upgrade Modal */}
       <UpgradeToPremiumModal 
         show={showUpgradeModal}
         onClose={() => setShowUpgradeModal(false)}

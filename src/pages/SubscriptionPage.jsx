@@ -12,8 +12,8 @@ const SubscriptionPage = () => {
   const [loading, setLoading] = useState(true);
   const [canceling, setCanceling] = useState(false);
   const [showUpgradeModal, setShowUpgradeModal] = useState(false);
-  const [showCancelModal, setShowCancelModal] = useState(false); // NEW
-  const { setIsPremium } = useContext(AppContext);
+  const [showCancelModal, setShowCancelModal] = useState(false);
+  const { setIsPremium, baseURL } = useContext(AppContext);
 
   useEffect(() => {
     fetchSubscriptionStatus();
@@ -22,7 +22,7 @@ const SubscriptionPage = () => {
   const fetchSubscriptionStatus = async () => {
     try {
       const token = await getToken();
-      const response = await fetch('http://localhost:8080/api/subscription/status', {
+      const response = await fetch(`${baseURL}/subscription/status`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -42,7 +42,7 @@ const SubscriptionPage = () => {
 
     try {
       const token = await getToken();
-      const response = await fetch('http://localhost:8080/api/subscription/cancel', {
+      const response = await fetch(`${baseURL}/subscription/cancel`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -70,7 +70,7 @@ const SubscriptionPage = () => {
     setShowUpgradeModal(false);
     setIsPremium(true);
     fetchSubscriptionStatus();
-};
+  };
 
   if (loading) {
     return (
@@ -89,7 +89,6 @@ const SubscriptionPage = () => {
         <div className="col-lg-8">
           <h2 className="mb-4">Subscription Management</h2>
 
-          {/* Current Plan Card */}
           <div className="card shadow-sm mb-4">
             <div className="card-body p-4">
               <div className="d-flex justify-content-between align-items-center mb-3">
@@ -158,7 +157,6 @@ const SubscriptionPage = () => {
             </div>
           </div>
 
-          {/* Billing Information */}
           {isPremium && (
             <div className="card shadow-sm">
               <div className="card-body p-4">
@@ -175,14 +173,12 @@ const SubscriptionPage = () => {
         </div>
       </div>
 
-      {/* Upgrade Modal */}
       <UpgradeToPremiumModal 
         show={showUpgradeModal}
         onClose={() => setShowUpgradeModal(false)}
         onSuccess={handleUpgradeSuccess}
       />
 
-      {/* Cancel Confirmation Modal */}
       {showCancelModal && (
         <div 
           className="modal d-block" 
