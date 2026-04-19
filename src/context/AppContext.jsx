@@ -1,6 +1,5 @@
 import { createContext, useState, useEffect } from "react";
 import { useAuth } from "@clerk/clerk-react";
-import.meta.env.VITE_BACKEND_URL
 
 export const AppContext = createContext();
 
