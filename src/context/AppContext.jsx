@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import { useAuth } from "@clerk/clerk-react";
+import.meta.env.VITE_BACKEND_URL
 
 export const AppContext = createContext();
 
@@ -24,7 +25,7 @@ export const AppContextProvider = (props) => {
   const [isUserLoaded, setIsUserLoaded] = useState(false);
 
   const { getToken, isSignedIn } = useAuth();
-  const baseURL = "http://localhost:8080/api";
+  const baseURL = `${import.meta.env.VITE_BACKEND_URL}/api`;
 
   useEffect(() => {
     if (!isSignedIn) return;
