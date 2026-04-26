@@ -1,0 +1,97 @@
+.template9 {
+    background: #f5f5f5;
+}
+
+/* Card */
+.invoice-card-gray {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+}
+
+/* Header */
+.header-gray {
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.company-name-gray {
+    font-size: 26px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.company-details-gray {
+    color: #6b7280;
+    font-size: 14px;
+}
+
+/* Invoice Meta */
+.invoice-meta-gray {
+    text-align: right;
+}
+
+.invoice-title-gray {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.meta-text-gray {
+    font-size: 14px;
+    color: #4b5563;
+}
+
+/* Billing */
+.billing-card-gray {
+    background: #fafafa;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+}
+
+.section-title-gray {
+    font-size: 12px;
+    font-weight: 600;
+    color: #6b7280;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+}
+
+/* Table */
+.table-header-gray {
+    background: #111827 !important;
+    color: #ffffff !important;
+}
+
+.table td,
+.table th {
+    vertical-align: middle;
+}
+
+/* Totals */
+.totals-gray {
+    background: #111827;
+    color: #ffffff;
+    border-radius: 10px;
+    min-width: 280px;
+}
+
+.total-highlight-gray {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+/* Footer Sections */
+.footer-box-gray {
+    background: #fafafa;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .invoice-meta-gray {
+        text-align: left;
+        margin-top: 10px;
+    }
+}

@@ -1,0 +1,37 @@
+.template8 {
+    background: #eef2ff;
+}
+
+.invoice-card-gradient {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.header-gradient {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: white;
+}
+
+.section-title-gradient {
+    font-size: 13px;
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
+.billing-card-gradient {
+    background: #f5f3ff;
+    border-radius: 10px;
+}
+
+.table-header-gradient {
+    background: #6366f1 !important;
+    color: white !important;
+}
+
+.totals-gradient {
+    background: #6366f1;
+    color: white;
+    border-radius: 10px;
+}

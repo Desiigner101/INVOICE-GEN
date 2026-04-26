@@ -1,0 +1,50 @@
+.template7 {
+    background: #f8fafc;
+}
+
+.invoice-card-indigo {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+.header-indigo {
+    background: linear-gradient(135deg, #4f46e5, #6366f1);
+    color: white;
+    padding: 25px;
+}
+
+.invoice-title-indigo {
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.section-title-indigo {
+    font-size: 13px;
+    font-weight: 600;
+    color: #6b7280;
+    text-transform: uppercase;
+}
+
+.billing-card-indigo {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+}
+
+.table-header-indigo {
+    background: #4f46e5 !important;
+    color: white !important;
+}
+
+.totals-indigo {
+    background: #111827;
+    color: white;
+    border-radius: 10px;
+}
+
+.total-indigo {
+    font-size: 20px;
+    font-weight: 700;
+}

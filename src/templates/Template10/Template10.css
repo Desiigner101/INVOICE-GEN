@@ -1,0 +1,82 @@
+.template10 {
+    background: #f8fafc;
+}
+
+/* Main Card */
+.invoice-card-modern {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+/* Accent Header */
+.header-modern {
+    position: relative;
+    padding: 25px;
+    background: white;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.header-modern::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 6px;
+    background: linear-gradient(180deg, #6366f1, #3b82f6);
+}
+
+/* Titles */
+.invoice-title-modern {
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #111827;
+}
+
+.section-title-modern {
+    font-size: 13px;
+    font-weight: 600;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Cards */
+.billing-card-modern {
+    background: #f9fafb;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+}
+
+/* Table */
+.table-header-modern {
+    background: #f3f4f6 !important;
+    color: #374151 !important;
+}
+
+.table-modern td {
+    border-color: #e5e7eb !important;
+}
+
+/* Totals */
+.totals-modern {
+    background: #111827;
+    color: white;
+    border-radius: 10px;
+}
+
+.total-modern {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+/* Footer blocks */
+.bank-modern,
+.notes-modern {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+}

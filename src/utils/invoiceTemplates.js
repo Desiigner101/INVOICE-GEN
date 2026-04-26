@@ -4,6 +4,10 @@ import Template3 from "../templates/Template3/Template3.jsx";
 import Template4 from "../templates/Template4/Template4.jsx";
 import Template5 from "../templates/Template5/Template5.jsx";
 import Template6 from "../templates/Template6/Template6.jsx";
+import Template7 from "../templates/Template7/Template7.jsx";
+import Template8 from "../templates/Template8/Template8.jsx";
+import Template9 from "../templates/Template9/Template9.jsx";
+import Template10 from "../templates/Template10/Template10.jsx";
 
 export const templateComponents = {
     template1: Template1,
@@ -11,5 +15,10 @@ export const templateComponents = {
     template3: Template3,
     template4: Template4,
     template5: Template5,
-    template6: Template6
+    template6: Template6,
+    template7: Template7,
+    template8: Template8,
+    template9: Template9,
+    template10: Template10
+        
 };
