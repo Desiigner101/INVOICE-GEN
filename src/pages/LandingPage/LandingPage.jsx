@@ -222,6 +222,153 @@ const LandingPage = () => {
                 </div>
             </section>
 
+            {/* Mobile App Download Section */}
+            <section
+            id="download-app"
+            className="py-5"
+            style={{ background: 'linear-gradient(135deg, #0d1117 0%, #1e3a5f 100%)' }}
+            >
+            <div className="container">
+                <div className="row align-items-center gy-5">
+
+                {/* Left */}
+                <div className="col-lg-6 text-white">
+                    <div className="mb-3">
+                    <span
+                        className="badge rounded-pill px-3 py-2"
+                        style={{ background: '#0D6EFD', fontSize: '0.85rem' }}
+                    >
+                        📱 Now Available on Android
+                    </span>
+                    </div>
+
+                    <h2 className="display-5 fw-bold mb-3">
+                    Take QuickInvoice <br />
+                    <span style={{ color: '#FFC107' }}>Everywhere You Go</span>
+                    </h2>
+
+                    <p
+                    className="lead mb-4"
+                    style={{ color: '#94a3b8', fontSize: '1.1rem' }}
+                    >
+                    Create, manage, and send professional invoices directly from your Android device.
+                    Syncs instantly with your web app.
+                    </p>
+
+                    {/* Features */}
+                    <div className="d-flex flex-wrap gap-2 mb-4">
+                    {[
+                        '✅ Free to Download',
+                        '✅ Syncs with Web App',
+                        '✅ Works Offline',
+                        '✅ All Templates Included',
+                    ].map((f, i) => (
+                        <span
+                        key={i}
+                        className="badge rounded-pill px-3 py-2"
+                        style={{
+                            background: 'rgba(255,255,255,0.1)',
+                            color: '#e2e8f0',
+                            fontSize: '0.8rem',
+                        }}
+                        >
+                        {f}
+                        </span>
+                    ))}
+                    </div>
+
+                    {/* Download Button */}
+                    <a
+                    href="/QuickInvoice-v1.0.apk"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-warning btn-lg fw-bold rounded-pill px-5 py-3 me-3 mb-3"
+                    >
+                    <i className="bi bi-android2 me-2"></i>
+                    Download APK
+                    </a>
+
+                    <p style={{ color: '#64748b', fontSize: '0.8rem' }}>
+                    Android 8.0+ · ~15MB · Free
+                    </p>
+
+                    {/* Install Instructions */}
+                    <div
+                    className="mt-3 p-3 rounded"
+                    style={{
+                        background: 'rgba(255,255,255,0.05)',
+                        border: '1px solid rgba(255,255,255,0.1)',
+                    }}
+                    >
+                    <p
+                        className="mb-1"
+                        style={{
+                        color: '#94a3b8',
+                        fontSize: '0.82rem',
+                        fontWeight: '600',
+                        }}
+                    >
+                        📌 How to install:
+                    </p>
+
+                    <ol
+                        className="mb-0 ps-3"
+                        style={{
+                        color: '#64748b',
+                        fontSize: '0.8rem',
+                        lineHeight: '1.8',
+                        }}
+                    >
+                        <li>Download the APK file</li>
+                        <li>Enable <strong style={{ color: '#94a3b8' }}>Unknown Sources</strong> in settings</li>
+                        <li>Open the APK and tap <strong style={{ color: '#94a3b8' }}>Install</strong></li>
+                        <li>Launch QuickInvoice and sign in</li>
+                    </ol>
+                    </div>
+                </div>
+
+                {/* Right (Clean Visual Area) */}
+                <div className="col-lg-6 text-center">
+                    <div
+                    className="p-5 rounded-4"
+                    style={{
+                        background: 'rgba(255,255,255,0.05)',
+                        border: '1px solid rgba(255,255,255,0.1)',
+                    }}
+                    >
+                    <h4 style={{ color: '#FFC107', fontWeight: '700' }}>
+                        QuickInvoice Mobile
+                    </h4>
+
+                    <p style={{ color: '#94a3b8', fontSize: '0.95rem' }}>
+                        Fast. Simple. Reliable.
+                    </p>
+
+                    {/* Stats */}
+                    <div className="d-flex justify-content-center gap-4 mt-4">
+                        {[
+                        { value: '5+', label: 'Templates' },
+                        { value: '100%', label: 'Free' },
+                        { value: 'v1.0', label: 'Version' },
+                        ].map((stat, i) => (
+                        <div key={i}>
+                            <div style={{ fontSize: '1.5rem', fontWeight: '800', color: '#FFC107' }}>
+                            {stat.value}
+                            </div>
+                            <div style={{ fontSize: '0.75rem', color: '#64748b' }}>
+                            {stat.label}
+                            </div>
+                        </div>
+                        ))}
+                    </div>
+
+                    </div>
+                </div>
+
+                </div>
+            </div>
+            </section>
+
             {/* Call to Action Section: Final prompt for users to start */}
             <section id="generate-invoice" className="py-5 text-center bg-primary text-white">
                 <div className="container">
